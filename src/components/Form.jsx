@@ -1,24 +1,17 @@
+import  { useState } from 'react'
 
-import React, { useState } from 'react'
 
-const BoxGenerator = () => {
-
+const Form = ({addBox}) => {
     const [boxColor, setBoxColor] = useState("");
     const [boxSize, setBoxSize] = useState("");
-    const[boxList, setBoxList] = useState([]);
 
     const createBox = (e) =>{
         e.preventDefault();
         const newBox ={boxColor, boxSize};
-        setBoxList ([newBox, ...boxList]);
-        console.log(boxList)
+        addBox(newBox)
     }  
-
-
-
-
-return (
-    <div>
+    
+    return (
         <form onSubmit={createBox} >
 
             <div>
@@ -38,17 +31,7 @@ return (
             <button type='submit'> Create Box</button>
 
         </form>
-
-        <div className='sort'>
-        {
-            boxList.map((b => 
-            <div style={{backgroundColor: b.boxColor, height: b.boxSize, width: b.boxSize}}></div>))
-        }
-        </div>
-
-
-    </div>
-)
+    )
 }
 
-export default BoxGenerator
+export default Form
