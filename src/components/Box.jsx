@@ -1,18 +1,18 @@
-import { buildQueries } from '@testing-library/react';
+
 import React, { useState } from 'react'
 
-const BoxGenerator = (props) => {
+const BoxGenerator = () => {
+
     const [boxColor, setBoxColor] = useState("");
     const [boxSize, setBoxSize] = useState("");
-
-    const[boxList, setBoxList] = useState([])
+    const[boxList, setBoxList] = useState([]);
 
     const createBox = (e) =>{
         e.preventDefault();
         const newBox ={boxColor, boxSize};
         setBoxList ([newBox, ...boxList]);
         console.log(boxList)
-    }
+    }  
 
 
 
@@ -41,7 +41,8 @@ return (
 
         <div className='sort'>
         {
-            boxList.map((b => <div style={{backgroundColor: b.boxColor, height: b.boxSize, width: b.boxSize}}></div>))
+            boxList.map((b => 
+            <div style={{backgroundColor: b.boxColor, height: b.boxSize, width: b.boxSize}}></div>))
         }
         </div>
 
